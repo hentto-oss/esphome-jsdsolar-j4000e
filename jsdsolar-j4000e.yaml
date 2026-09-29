@@ -1,0 +1,307 @@
+esphome:
+  name: jsdsolar-j4000e-custom
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+ota:
+  - platform: esphome
+
+wifi:
+  networks:
+    - ssid: !secret wifi_home_ssid
+      password: !secret wifi_home_password
+
+  ap:
+    ssid: "Jsd4000e-Fallback-Logger"
+    password: !secret wifi_ap_password
+
+captive_portal:
+
+status_led:
+  pin: GPIO2
+
+web_server:
+  port: 80
+  version: 3
+
+api:
+  reboot_timeout: 0s
+
+logger:
+  level: DEBUG
+  baud_rate: 115200
+
+uart:
+  id: uart_modbus
+  tx_pin: GPIO17
+  rx_pin: GPIO16
+  baud_rate: 9600
+  stop_bits: 1
+  parity: NONE
+  data_bits: 8
+
+modbus:
+  id: modbus_bus
+  uart_id: uart_modbus
+  send_wait_time: 250ms
+
+modbus_controller:
+  - id: inverter
+    address: 1
+    modbus_id: modbus_bus
+    setup_priority: -10
+    update_interval: 5s
+    offline_skip_updates: 5
+
+sensor:
+  - platform: uptime
+    name: "JSD4000E Uptime"
+
+  - platform: wifi_signal
+    name: "JSD4000E WiFi Signal"
+    update_interval: 60s
+
+  - platform: modbus_controller
+    modbus_controller_id: inverter
+    name: "JSD4000E Grid Voltage"
+    register_type: holding
+    address: 0x0050
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: inverter
+    name: "JSD4000E Grid Current"
+    register_type: holding
+    address: 0x0051
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: inverter
+    name: "JSD4000E Grid Frequency"
+    register_type: holding
+    address: 0x0052
+    unit_of_measurement: "Hz"
+    device_class: frequency
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: inverter
+    name: "JSD4000E Grid Power"
+    register_type: holding
+    address: 0x0053
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    value_type: S_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: inverter
+    name: "JSD4000E Load Power"
+    id: jsd_load_power
+    register_type: holding
+    address: 0x005C
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    value_type: S_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: inverter
+    name: "JSD4000E Battery Voltage"
+    register_type: holding
+    address: 0x0080
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: inverter
+    name: "JSD4000E Battery Current"
+    register_type: holding
+    address: 0x0081
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    value_type: S_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: inverter
+    name: "JSD4000E Battery SOC"
+    register_type: holding
+    address: 0x0084
+    unit_of_measurement: "%"
+    device_class: battery
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 1.0
+
+  - platform: modbus_controller
+    modbus_controller_id: inverter
+    name: "JSD4000E Battery Power"
+    id: jsd_battery_power
+    register_type: holding
+    address: 0x0085
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    value_type: S_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: inverter
+    name: "JSD4000E PV1 Voltage"
+    register_type: holding
+    address: 0x0096
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: inverter
+    name: "JSD4000E PV1 Current"
+    register_type: holding
+    address: 0x0097
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: inverter
+    name: "JSD4000E PV1 Power"
+    id: jsd_pv1_power
+    register_type: holding
+    address: 0x0098
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    value_type: S_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: inverter
+    name: "JSD4000E Inverter Temperature"
+    register_type: holding
+    address: 0x0331
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    accuracy_decimals: 0
+    value_type: S_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: inverter
+    name: "JSD4000E Buck Temperature"
+    register_type: holding
+    address: 0x0332
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    accuracy_decimals: 0
+    value_type: S_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: inverter
+    name: "JSD4000E Transformer Temperature"
+    register_type: holding
+    address: 0x0333
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    accuracy_decimals: 0
+    value_type: S_WORD
+
+  - platform: integration
+    name: "JSD4000E PV Energy Total"
+    sensor: jsd_pv1_power
+    time_unit: h
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.001
+
+  - platform: integration
+    name: "JSD4000E Load Energy Total"
+    sensor: jsd_load_power
+    time_unit: h
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.001
+
+  - platform: integration
+    name: "JSD4000E Battery Energy Total"
+    sensor: jsd_battery_power
+    time_unit: h
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.001
+
+text_sensor:
+  - platform: wifi_info
+    ip_address:
+      name: "JSD4000E IP Address"
+
+select:
+  - platform: modbus_controller
+    modbus_controller_id: inverter
+    id: set_output_priority
+    name: "JSD4000E Menu 03: Output Priority"
+    entity_category: config
+    address: 16642
+    value_type: U_WORD
+    optimistic: true
+    use_write_multiple: true
+    optionsmap:
+      "GPB (Grid-PV-Battery)": 0
+      "PGB (PV-Grid-Battery)": 1
+      "PBG (PV-Battery-Grid)": 2
+      "MKS Mode": 3
+
+  - platform: modbus_controller
+    modbus_controller_id: inverter
+    id: set_charger_priority
+    name: "JSD4000E Charger Priority"
+    entity_category: config
+    address: 16643
+    value_type: U_WORD
+    optimistic: true
+    use_write_multiple: true
+    optionsmap:
+      "Tylko PV (Solar Only)": 0
+      "PV i Sieć (Solar & Utility)": 1
+      "Najpierw PV (Solar First)": 2
