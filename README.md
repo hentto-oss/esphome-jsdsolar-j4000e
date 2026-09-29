@@ -102,10 +102,3 @@ import_cost: ''
 export_cost: ''
 sparkline_shared_scale: false
 mppt_scale: 1
-
-sun_entity: sun.sun
-daily_solar: sensor.jsdsolar_j4000e_custom_jsd4000e_pv_energy_total
-daily_load: sensor.jsdsolar_j4000e_custom_jsd4000e_load_energy_total
-daily_charge: sensor.jsdsolar_j4000e_custom_jsd4000e_battery_energy_total
-temperature: sensor.jsdsolar_j4000e_custom_jsd4000e_inverter_temperature
-```
