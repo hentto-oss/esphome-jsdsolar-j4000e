@@ -248,6 +248,7 @@ sensor:
     device_class: energy
     state_class: total_increasing
     accuracy_decimals: 2
+    unit_of_measurement: "kWh"
     filters:
       - multiply: 0.001
 
@@ -258,6 +259,7 @@ sensor:
     device_class: energy
     state_class: total_increasing
     accuracy_decimals: 2
+    unit_of_measurement: "kWh"
     filters:
       - multiply: 0.001
 
@@ -268,6 +270,7 @@ sensor:
     device_class: energy
     state_class: total_increasing
     accuracy_decimals: 2
+    unit_of_measurement: "kWh"
     filters:
       - multiply: 0.001
 
