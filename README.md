@@ -16,7 +16,7 @@ Complete local integration for the **JSDSolar JSD4000E** solar inverter using ES
 Connect your ESP32 to the inverter's Modbus/RS485 port using an RS485-to-TTL converter:
 - **TX_PIN:** GPIO17
 - **RX_PIN:** GPIO16
-inwenter.png
+![Pinout falownika](pinout.png)
 ---
 
 ## 📋 Configuration
