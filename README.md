@@ -38,7 +38,7 @@ To get a beautiful, animated power flow visualization, install `xpower-flow-card
 ```yaml
 type: custom:xpower-flow-card
 preset: custom
-inverter_name: Inverter JSD4000E
+inverter_name: Inverter jsd4000e
 language: pl
 font_size: 28
 compact: false
@@ -50,11 +50,11 @@ temp_unit: auto
 theme: auto
 animations: auto
 flow_speed: proportional
-solar: sensor.jsdsolar_j4000e_custom_jsd4000e_pv1_power
-pv_voltage: sensor.jsdsolar_j4000e_custom_jsd4000e_pv1_voltage
+solar: sensor.salon_jsdsolar_j4000e_custom_jsd4000e_pv1_power
+pv_voltage: sensor.salon_jsdsolar_j4000e_custom_jsd4000e_pv1_voltage
 battery: sensor.jsdsolar_j4000e_custom_jsd4000e_battery_power
-battery_voltage: sensor.jsdsolar_j4000e_custom_jsd4000e_battery_voltage
-soc: sensor.jsdsolar_j4000e_custom_jsd4000e_battery_soc
+battery_voltage: sensor.salon_jsdsolar_j4000e_custom_jsd4000e_battery_voltage
+soc: sensor.salon_jsdsolar_j4000e_custom_jsd4000e_battery_soc
 shutdown_soc: 20
 battery_capacity: 2560
 bat_polarity: negative
@@ -63,6 +63,46 @@ grid: sensor.jsdsolar_j4000e_custom_jsd4000e_grid_power
 frequency: sensor.jsdsolar_j4000e_custom_jsd4000e_grid_frequency
 grid_polarity: positive
 grid_threshold: 0
+sun_entity: sun.sun
+daily_solar: sensor.jsdsolar_j4000e_custom_jsd4000e_pv_energy_total
+daily_load: sensor.jsdsolar_j4000e_custom_jsd4000e_load_energy_total
+daily_charge: sensor.jsdsolar_j4000e_custom_jsd4000e_battery_energy_total
+temperature: sensor.jsdsolar_j4000e_custom_jsd4000e_inverter_temperature
+grid_voltage: ''
+grid_status: ''
+daily_import: ''
+daily_export: ''
+daily_discharge: ''
+battery_temperature: ''
+solar2: ''
+solar3: ''
+pv_voltage2: ''
+pv_voltage3: ''
+battery_charge: ''
+battery_discharge: ''
+grid_voltage_l2: ''
+grid_voltage_l3: ''
+weather_temp: ''
+weather_humidity: ''
+weather_entity: ''
+price_sensor: ''
+ev_power: ''
+ev_soc: ''
+daily_ev: ''
+extra1_power: ''
+extra1_name: ''
+extra1_icon: appliance
+extra2_power: ''
+extra2_name: ''
+extra2_icon: heatpump
+extra3_power: ''
+extra3_name: ''
+extra3_icon: garage
+import_cost: ''
+export_cost: ''
+sparkline_shared_scale: false
+mppt_scale: 1
+
 sun_entity: sun.sun
 daily_solar: sensor.jsdsolar_j4000e_custom_jsd4000e_pv_energy_total
 daily_load: sensor.jsdsolar_j4000e_custom_jsd4000e_load_energy_total
