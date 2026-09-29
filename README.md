@@ -9,7 +9,7 @@ Complete local integration for the **JSDSolar JSD4000E** solar inverter using ES
 - **Battery Analytics:** Voltage, current, SOC (%), and battery power.
 - **Energy Statistics:** Total PV energy, total load, and battery totals converted to kWh (compatible with Home Assistant Energy Dashboard).
 - **Controls (Writable Registers):** Directly change **Output Priority (Menu 03)** and **Charger Priority** options from your Home Assistant Dashboard.
-
+  
 ---
 
 ## 🛠️ Hardware Setup
@@ -32,7 +32,7 @@ wifi_ap_password: "YOUR_FALLBACK_AP_PASSWORD"
 ---
 
 ## 📊 Home Assistant Dashboard (Lovelace)
-
+![Dashboard Home Assistant](dashboard.png)
 To get a beautiful, animated power flow visualization, install `xpower-flow-card` via HACS and use the following YAML configuration for your card:
 
 ```yaml
