@@ -1,4 +1,4 @@
-# -esphome-jsdsolar-j4000e
+# esphome-jsdsolar-j4000e
 ESPHome configuration for JSDSolar JSD4000E inverter with Modbus RTU and Home Assistant Lovelace card.
 # ESPHome Integration for JSDSolar JSD4000E Inverter (Modbus RTU)
 
