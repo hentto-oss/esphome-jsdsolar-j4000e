@@ -102,3 +102,50 @@ import_cost: ''
 export_cost: ''
 sparkline_shared_scale: false
 mppt_scale: 1
+
+## ENCJE
+
+type: entities
+title: Dane teraz
+icon: mdi:solar-power
+show_header_toggle: false
+entities:
+  - entity: sensor.jsdsolar_j4000e_custom_jsd4000e_battery_power
+    name: Magazyn (Moc)
+    icon: mdi:battery-flash
+  - entity: sensor.jsdsolar_j4000e_custom_jsd4000e_battery_current
+    name: Magazyn (Prąd)
+    icon: mdi:current-dc
+  - entity: sensor.salon_jsdsolar_j4000e_custom_jsd4000e_battery_voltage
+    name: Magazyn (Napięcie)
+    icon: mdi:battery-high
+  - entity: sensor.salon_jsdsolar_j4000e_custom_jsd4000e_battery_soc
+    name: Stan naładowania (SOC)
+    icon: mdi:battery-charging-80
+  - entity: sensor.jsdsolar_j4000e_custom_jsd4000e_battery_energy_total
+    name: Magazyn (Suma energii)
+    icon: mdi:counter
+  - type: divider
+  - entity: sensor.jsdsolar_j4000e_custom_jsd4000e_load_power
+    name: Dom (Obciążenie bieżące)
+    icon: mdi:home-lightning-bolt
+  - entity: sensor.jsdsolar_j4000e_custom_jsd4000e_load_energy_total
+    name: Dom (Suma zużycia)
+    icon: mdi:counter
+  - type: divider
+  - entity: sensor.salon_jsdsolar_j4000e_custom_jsd4000e_pv1_power
+    name: PV (Moc ze słońca)
+    icon: mdi:solar-panel-large
+  - entity: sensor.jsdsolar_j4000e_custom_jsd4000e_pv1_current
+    name: PV (Prąd z paneli)
+    icon: mdi:current-dc
+  - entity: sensor.salon_jsdsolar_j4000e_custom_jsd4000e_pv1_voltage
+    name: PV (Napięcie stringu)
+    icon: mdi:flash-outline
+  - entity: sensor.jsdsolar_j4000e_custom_jsd4000e_pv_energy_total
+    name: PV (Suma produkcji)
+    icon: mdi:counter
+  - type: divider
+  - entity: sensor.jsdsolar_j4000e_custom_jsd4000e_inverter_temperature
+    name: Temperatura falownika
+    icon: mdi:thermometer
