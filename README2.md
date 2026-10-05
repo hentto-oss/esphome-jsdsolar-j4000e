@@ -13,8 +13,8 @@ Komunikacja odbywa się bezpośrednio na poziomach logicznych TTL (3,3 V) z pomi
 ![Pinout falownika](pinout.png)
 
 ### Schemat połączenia z zewnętrznym ESP32:
-* **Pin 1 (GPIO39 jako TX)** -> podłącz do pinu **RX** (np. GPIO16) w ESP32
-* **Pin 2 (GPIO38 jako RX)** -> podłącz do pinu **TX** (np. GPIO17) in ESP32
+* **Pin 1 (GPIO39 jako TX)** -> podłącz do pinu **TX** (np. GPIO16) w ESP32
+* **Pin 2 (GPIO38 jako RX)** -> podłącz do pinu **RX** (np. GPIO17) in ESP32
 * **Pin 3 (VCC 3.3V)** -> opcjonalne zasilanie układu
 * **Pin 5 (GND)** -> podłącz do pinu **GND** w ESP32 (**WYMAGANE!**)
 
